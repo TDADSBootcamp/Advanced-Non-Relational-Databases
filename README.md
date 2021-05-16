@@ -19,23 +19,3 @@ Example: `cat myfile.txt | python mapper.py | sort | python reducer.py`
 
 You can optionally run a real Hadoop cluster on your VM to process these jobs.
 
-You can install and run Hadoop on your VM using [these instructions](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html).
-
-There is also a [Dockerfile](Dockerfile) provided in this project that builds a Docker image with a Hadoop distribution installed. 
-Build the image from this directory: `docker build -t hadoop .`
-
-Run the word count example from this directory:
-
-```
-docker run \
-  -v $(pwd)/python:/work \
-  hadoop \
-  -input /work/word_count/war_of_the_worlds.txt \
-  -output /work/uncommitted/hadoop-output/$(date --iso-8601=seconds) \
-  -mapper 'python3 /work/word_count/mapper.py' \
-  -reducer 'python3 /work/word_count/reducer.py'
-```
-
-This will run a container based on the `hadoop` image you built, mounting the `python` directory to `/work`.
-
-:warning: the output that Hadoop will write from this container will not be owned by your user account. You will need to `sudo rm -rf python/uncommitted` to delete them.
