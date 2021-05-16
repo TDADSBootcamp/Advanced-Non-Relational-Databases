@@ -1,5 +1,13 @@
 Exploring a network dataset with sqlite3 (SQL) and neo4j (Cypher)
 
+# Using sqlite3
+
+In directory [people](.):
+
+- Run `sqlite3 people.db < load_people.sql` to populate the database.
+- Run `sqlite3 people.db` to enter an interactive session and query the loaded database.
+- `crtl-d` to quit out of the interactive session when done.
+
 # Using Neo4J
 
 - you will need Docker to run this example
@@ -7,7 +15,7 @@ Exploring a network dataset with sqlite3 (SQL) and neo4j (Cypher)
 
 Neo4J is a Graph Database. Instead of tables, it stores nodes and edges (aka relationships). That allows us to represent and query data like an organisational hierarchy, a social network or links between webpages in a natural and flexible way.
 
-This repo contains an example Neo4J database setup, in [run.sh](run.sh).
+This repo contains an example Neo4J database setup, in [neo4j/run.sh](neo4j/run.sh).
 It will run Neo4J in a docker container, loading the nodes and edges contained in the [import](import/) directory.
 
 Once started, you can access the database on http://localhost:7474/. Authentication has been disabled for this example, so you can just click "connect" and you will connect to the database.

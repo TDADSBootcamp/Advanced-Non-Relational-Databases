@@ -1,10 +1,10 @@
-CREATE SCHEMA tda;
+CREATE SCHEMA IF NOT EXISTS tda;
 
 use tda;
 
-DROP TABLE access_log;
+DROP TABLE IF EXISTS access_log_columnstore;
 
-CREATE TABLE access_log (
+CREATE TABLE access_log_columnstore (
     client_ip TEXT,
     identity TEXT,
     user_name TEXT,
@@ -20,7 +20,7 @@ CREATE TABLE access_log (
 
 
 LOAD DATA INFILE '/work/uncommitted/access.log'
-INTO TABLE access_log
+INTO TABLE access_log_columnstore
 FIELDS TERMINATED BY ' '
 ENCLOSED BY '"'
 ;
