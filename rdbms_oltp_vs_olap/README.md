@@ -4,16 +4,16 @@ with analytics specialist [ColumnStore](https://mariadb.com/kb/en/mariadb-column
 
 [MariaDB](https://en.wikipedia.org/wiki/MariaDB) is a fork of the MySQL RDBMS, following its acquisition by Oracle.
 
+# Get the Dataset
+
+We will use the 3.3Gb access log dataset [from the optimisation session](https://github.com/TDADSBootcamp/Advanced-Bigger-Data).
+Get the access log dataset from earlier session, and place the decompressed data at `uncommitted/access.log`.
+
 # Setup MariaDB
 
 [run_mariadb.sh](run_mariadb.sh) will start up a Docker container based on the latest MariaDB image with the columnstore plugin installed.
 
 It will start the container attempt to grant user privileges. If unsuccessful (probably because the server is not yet ready for connections), it will pause for a few seconds and retry, in a loop.
-
-# Get the Dataset
-
-We will use the 3.3Gb access log dataset [from the optimisation session](https://github.com/TDADSBootcamp/Advanced-Bigger-Data).
-Get the access log dataset from earlier session, and place the decompressed data at `uncommitted/access.log`.
 
 # Connect to MariaDB
 
