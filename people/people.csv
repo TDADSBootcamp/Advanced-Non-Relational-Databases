@@ -1,0 +1,11 @@
+person,knows
+alice,bob
+bob,charlie
+dave,eve
+bob,dave
+bob,alice
+charlie,alice
+eve,charlie
+dave,alice
+dave,charlie
+bob,frank
