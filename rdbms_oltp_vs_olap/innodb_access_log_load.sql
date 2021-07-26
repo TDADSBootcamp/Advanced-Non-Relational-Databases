@@ -18,7 +18,7 @@ CREATE TABLE access_log_innodb (
     unknown TEXT
 );
 
-LOAD DATA INFILE '/work/uncommitted/access.log'
+LOAD DATA INFILE '/work/uncommitted/access.log' IGNORE
 INTO TABLE access_log_innodb
 FIELDS TERMINATED BY ' '
 ENCLOSED BY '"'
