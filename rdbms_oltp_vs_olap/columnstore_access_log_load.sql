@@ -19,7 +19,7 @@ CREATE TABLE access_log_columnstore (
 ) ENGINE=ColumnStore;
 
 
-LOAD DATA INFILE '/work/uncommitted/access.log'
+LOAD DATA INFILE '/work/uncommitted/access.log' IGNORE
 INTO TABLE access_log_columnstore
 FIELDS TERMINATED BY ' '
 ENCLOSED BY '"'
