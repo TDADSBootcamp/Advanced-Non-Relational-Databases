@@ -20,4 +20,5 @@ docker run \
   --name search-server \
   --net elasticsearch \
   -e "discovery.type=single-node" \
+  -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
   docker.elastic.co/elasticsearch/elasticsearch:${ES_TAG}
