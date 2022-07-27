@@ -10,6 +10,7 @@ ES_TAG=$(cat ${BASEDIR}/es_version.txt)
 echo "Running Kibana"
 
 docker run \
+  --rm \
   -p 5601:5601 \
   --net elasticsearch \
   -e ELASTICSEARCH_HOSTS=http://search-server:9200 \

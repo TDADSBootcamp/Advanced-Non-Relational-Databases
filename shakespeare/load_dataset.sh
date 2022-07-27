@@ -7,24 +7,21 @@ DATASET_PATH=${BASEDIR}/uncommitted/shakespeare.json
 
 echo "Creating index"
 
-wget -O - \
-  --method PUT \
-  http://localhost:9200/shakespeare || true
+curl -XPUT http://localhost:9200/shakespeare || true
 
-
+echo ""
 echo "Setting up field mappings"
 
-wget -O - \
-  --method PUT \
-  --body-file ${BASEDIR}/mapping.json \
-  --header "Content-Type:application/json" \
+curl -XPUT \
+  -H "Content-Type:application/json" \
+  --data-binary "@${BASEDIR}/mapping.json" \
   http://localhost:9200/shakespeare/_mapping
 
+echo ""
 echo "Importing dataset"
 
-wget -O - \
-  --method POST \
-  --body-file ${BASEDIR}/uncommitted/shakespeare.json \
-  --header "Content-Type: application/x-ndjson" \
-  localhost:9200/shakespeare/_bulk?pretty
+curl -XPOST \
+  -H "Content-Type:application/json" \
+  --data-binary "@${BASEDIR}/uncommitted/shakespeare.json" \
+  http://localhost:9200/shakespeare/_bulk?pretty > ${BASEDIR}/uncommitted/index.log
 
